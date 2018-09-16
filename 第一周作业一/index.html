@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#playaudio1{
+				margin-left:100px;
+			}
+			#playaudio2{
+				margin-left:85px
+			}
+		</style>
+	</head>
+	<body>
+		千千厥歌
+		<audio src="01.mp3" id="audios1">
+		您的浏览器不支持Audio标签
+		</audio>
+		<input type='button' value="播放" id="playaudio1"  /></br>
+		思念人之屋
+		<audio src="01.mp3" id="audios2">
+		您的浏览器不支持Audio标签
+		</audio>
+		<input type='button' value="播放" id="playaudio2"  />
+	</body>
+	<script>
+			var playbutton1 = document.getElementById('playaudio1');
+			var audios1 = document.getElementById('audios1');
+				playbutton1.onclick=function(){
+					if(playbutton1.value=="播放"){
+						audios1.play();
+						console.log(playbutton1.value);
+						playbutton1.value="暂停";
+						if(playbutton2.value=="暂停"){
+							audios2.pause();
+							playbutton2.value="播放"
+						}
+					}
+					else{
+						audios1.pause();
+						console.log(playbutton1.value);
+						playbutton1.value="播放";	
+					}
+				}
+			var playbutton2 = document.getElementById('playaudio2');
+			var audios2 = document.getElementById('audios2');
+				playbutton2.onclick=function(){
+					if(playbutton2.value=="播放"){
+						audios2.play();
+						console.log(playbutton2.value);
+						playbutton2.value="暂停";
+						if(playbutton1.value=="暂停"){
+							audios1.pause();
+							playbutton1.value="播放";
+						}
+					}
+					else{
+						audios2.pause();
+						console.log(playbutton2.value);
+						playbutton2.value="播放";	
+					}
+				}
+	</script>
+</html>

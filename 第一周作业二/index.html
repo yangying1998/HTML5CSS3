@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<style>
+			.a{
+				color:red;
+				}
+			.b{
+				margin-bottom:20px;
+				width:500px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>请填写个人信息</p>
+		<form>
+		<fieldset class="b">
+			<legend  class="a">基本信息</legend>
+			姓名<input type="text" name="name" placeholder="请输入姓名" required="required"><span class="a">*</span></br>
+			年龄<input type="number" name="age" placeholder="20">
+		</fieldset> 
+		<fieldset class="b">
+			<legend class="a">你想在那里收到邮件？</legend>
+			邮箱<input type="text" name="email" placeholder="请输入邮箱"autocomplete="on""
+				 list="names" id="email"/>
+			<span class="a">*</span>
+			<datalist id="names" >
+				<option>@qq.com</option>
+				<option>@163.com</option>
+				<option>@gmail.com</option>
+				<option>@yahu.com.cn</option>
+				<option>@126.com</option>
+			</datalist>	
+		</fieldset> 
+		<fieldset class="b">
+			<legend class="a">收入情况</legend>
+			月收入<input type="text" name="salary" placeholder="20k+"></br>
+			银行卡<input type="text" name="card"  >有效期<input type="date" name="date">
+		</fieldset> 
+		<fieldset class="b">
+			<legend class="a">选取提交文件</legend>
+			文件<input type="file" name="file">
+		</fieldset> 
+		<button value="submit">提交</button>
+		</form>
+	</body>
+	<script type="text/javascript" >
+		window.onload=function(){
+			var options=document.getElementsByTagName("option");
+			var email=document.getElementById("email");
+			var names=document.getElementById("names");
+			email.onfocus=function (){
+				names.style.display="none";
+			}
+			for(var i=0;i<options.length;i++){
+				if(/\s*\S/.test(email.value)){
+					options[i].value=options[i].value+email.value;
+				}
+			}
+		}
+	</script>
+</html>
+
