@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片拖动</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<p>上传头像</p>
+	<div  id="target" style="width:200px;height:150px;border:1px solid black;"
+		ondragover="allowDrop(event)"
+		ondrop="drop(event)">
+	</div>
+</body>
+<script type="text/javascript">
+	var target=document.getElementById("target");
+	function drop(e){
+		e.preventDefault();
+		var file=e.dataTransfer.files[0]; 
+		var reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = function(e)
+	    {
+	       target.innerHTML='<img src="'+this.result+'" alt=""/>';
+	    }
+	}
+	function allowDrop(e){
+		e.preventDefault();
+	}
+</script>
+</html>
+	
