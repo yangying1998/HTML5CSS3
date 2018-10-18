@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"  style="border:1px solid red;">
+			<script>
+				var canvas = document.getElementById('canvas');
+				var ctx = canvas.getContext('2d'); 
+				var hour,second,minute;
+				function fun1(){
+				 ctx.beginPath(); 
+				 ctx.lineWidth = 2; 
+				 ctx.strokeStyle ="chartreuse"; 
+				 ctx.arc(150,150,146,0,2*Math.PI); 
+				 ctx.stroke();
+				 ctx.closePath();
+				 ctx.beginPath();
+				 ctx.arc(150,150,6,0,2*Math.PI); 
+				 ctx.fillStyle = 'red';
+				 ctx.fill();
+				 ctx.closePath(); }
+				function fun2(){
+				 for(var i = 0,l = 12; i < 12; i++){
+				 	 ctx.save(); 
+				 	 ctx.translate(150,150); 
+				 	 ctx.rotate(i*1/12*2*Math.PI); 
+				 	 ctx.beginPath(); 
+				 	 ctx.lineWidth = 5;
+				 	 ctx.strokeStyle = 'red';
+				 	 ctx.moveTo(0,-140);
+				 	 ctx.lineTo(0,-125); 
+				 	 ctx.stroke(); 
+				 	 ctx.closePath(); 
+				 	 ctx.restore(); } } 
+				function fun3(){ 
+					for(var i = 0,l = 60; i < 60; i++){ 
+						ctx.save(); 
+						ctx.translate(150,150); 
+						ctx.rotate(i*1/60*2*Math.PI); 
+						ctx.beginPath(); 
+						ctx.lineWidth = 3; 
+						ctx.strokeStyle = '#333'; 
+						ctx.moveTo(0,-140); 
+						ctx.lineTo(0,-133); 
+						ctx.stroke(); 
+						ctx.closePath(); 
+						ctx.restore(); } } 
+				function fun4(){ 
+					ctx.save(); 
+					ctx.translate(150,150); 
+					ctx.rotate((hour*60*60+minute*60+second)/(12*60*60)*2*Math.PI); 
+					ctx.beginPath(); 
+					ctx.strokeStyle = '#333'; 
+					ctx.lineWidth = 3; 
+					ctx.moveTo(0,0); 
+					ctx.lineTo(0,-40); 
+					ctx.stroke(); 
+					ctx.closePath(); 
+					ctx.restore(); }
+				function fun5(){ 
+					ctx.save(); 
+					ctx.translate(150,150); 
+					ctx.rotate((minute*60+second)/(60*60)*2*Math.PI); 
+					ctx.beginPath(); 
+					ctx.strokeStyle = '#333'; 
+					ctx.lineWidth = 2; 
+					ctx.moveTo(0,0); 
+					ctx.lineTo(0,-60); 
+					ctx.stroke(); 
+					ctx.closePath(); 
+					ctx.restore(); }
+				function fun6(){ 
+					ctx.save(); 
+					ctx.translate(150,150); 
+					ctx.rotate(second/60*2*Math.PI); 
+					ctx.beginPath(); 
+					ctx.strokeStyle = 'red'; 
+					ctx.lineWidth = 1; 
+					ctx.moveTo(0,0); 
+					ctx.lineTo(0,-80); 
+					ctx.stroke(); 
+					ctx.closePath(); 
+					ctx.restore(); } 
+				function fun7(){ 
+					var date = new Date(); 
+					hour = date.getHours(); 
+					minute = date.getMinutes(); 
+					second = date.getSeconds(); } 
+				setInterval(function(){ 
+					ctx.clearRect(0,0,600,600); 
+					fun1(); 
+					fun3(); 
+					fun2(); 
+					fun7(); 
+					fun4(); 
+					fun5(); 
+					fun6(); },1000);				
+				</script>
+			</canvas>
+		</body>
+</html>
+
+
+
+
